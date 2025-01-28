@@ -13,8 +13,7 @@ namespace myMusic
             string? bandName = Console.ReadLine();
 
             //---Prompt user to input Character
-            Console.WriteLine('What is the genre of music: P for pop, R for rock, M for heavy metal, A for alternative, C for country, J for jazz');
-
+            Console.WriteLine("What is the genre of music: P for pop, R for rock, M for heavy metal, A for alternative, C for country, J for jazz");
             //---Convert to Char
             char bandChar = Convert.ToChar(Console.Read());
             Console.ReadLine();
