@@ -27,7 +27,7 @@ namespace ItsMyParty
             // using string interpolation, print the following information
             // "{myName} has a birthday on {myBirthday}. There will be a party at {venue} with {guests} people."
             // "Save room for the {cake} cake!"
-            
+            Console.WriteLine($"{myName} has a birthday on {myBirthday}. There will be a party at {venue} with {guests} people.");
         }
     }
 } 
