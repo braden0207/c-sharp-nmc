@@ -1,22 +1,31 @@
 using System;
-namespace myGrade
+namespace calcDiscount
 {
   internal class Program
   {
     static void Main(string[] args)
     {
-      Console.Write("Enter your test score: ");
-       double score = double.Parse(Console.ReadLine());
-       if (score >= 90)
-       Console.WriteLine("A");
-       else if (score >= 80)
-       Console.WriteLine("B");
-       else if (score >= 70)
-       Console.WriteLine("C");
-       else if (score >= 60)
-       Console.WriteLine("D");
+      //---welcome and prompt---
+      Console.Write("Welcome to the frequent shopper discount program!");
+      Console.Write("Please enter your 4 digit pin: ");
+      //variables
+       double pin = double.Parse(Console.ReadLine());
+       
+
+       //---discount of pin---
+       if (pin > 5000)
+       Console.WriteLine("You get 20% a discount!");
+       else if (pin > 1000)
+       Console.WriteLine("You get a 15% discount!");
+       else if (pin > 100)
+       Console.WriteLine("You get 10% a discount!");
        else
-       Console.WriteLine("Please see tutoring");
+       Console.WriteLine("You get a 5% discount!");
+
+      //spent amount
+      Console.Write("Please enter the amount you spent: ");
+      double spent = double.Parse(Console.ReadLine());
+      double totalcost = spent-(spent * pin);
     }
   }
 }
@@ -33,6 +42,9 @@ namespace myGrade
 //pin numbers > 100 receive a 10% discount
 //everyone else with a pin receives a 5% discount
 //d) Prompt the user for the amount they spent
+//e) Read in the amount spent and store the value.
+//f) Calculate the total cost = amount spent – ( amount spent * discount)
+//g) Write out the customer’s total cost using formatted output.
 //e) Read in the amount spent and store the value.
 //f) Calculate the total cost = amount spent – ( amount spent * discount)
 //g) Write out the customer’s total cost using formatted output.
