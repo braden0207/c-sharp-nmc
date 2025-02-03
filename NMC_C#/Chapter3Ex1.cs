@@ -7,13 +7,13 @@ namespace calcDiscount
         {
             //---welcome and prompt---
             Console.Write("Welcome to the frequent shopper discount program!");
-            Console.Write("Please enter your 4 digit pin: ");
+            Console.Write("Please enter your 4 digit PIN: ");
             double pin = double.Parse(Console.ReadLine());
 
             double discount = 0;
 
             //---spent amount---
-            Console.Write("Please enter the amount you spent: ");
+            Console.Write("How much did you spend today?: ");
             double spent = double.Parse(Console.ReadLine());
 
             //---discount of pin---
@@ -38,8 +38,8 @@ namespace calcDiscount
                 discount = 0.95;
             }
 
-            double totalcost = spent - (spent * discount);
-            Console.WriteLine($"The total cost of your amount spent is {totalcost:C}");
+            double totalcost = (spent * discount);
+            Console.WriteLine($"Your total cost is {totalcost:C}!");
         }
     }
 }
