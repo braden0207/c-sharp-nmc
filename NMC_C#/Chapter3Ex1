@@ -20,3 +20,19 @@ namespace myGrade
     }
   }
 }
+
+//You are writing a program that will calculate a discount for shoppers based upon the
+//pin number they enter. Create a new C# console application and name it Chapter3Ex1.
+//2. The program should do the following:
+//a) Welcome the user to the frequent shopper discount program
+//b) Prompt the user for their 4 digit pin
+//c) Read in the pin and use a nested if…else to determine the discount. The rules are as
+//follows:
+//pin numbers > 5000 receive a 20% discount
+//pin numbers > 1000 receive a 15% discount
+//pin numbers > 100 receive a 10% discount
+//everyone else with a pin receives a 5% discount
+//d) Prompt the user for the amount they spent
+//e) Read in the amount spent and store the value.
+//f) Calculate the total cost = amount spent – ( amount spent * discount)
+//g) Write out the customer’s total cost using formatted output.
