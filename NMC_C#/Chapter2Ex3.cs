@@ -28,3 +28,23 @@ namespace myMusic
         }
     }
 }
+
+//The original output looks like the example below:
+//You have been listening to Unstoppable by Sia.
+//The song genre is P and you have listened to the song approximately 20 times this week.
+//Your new output will look like the following:
+//You have been listening to Unstoppable by Sia.
+//The song genre is Pop and you have listened to the song approximately 20 times this
+//week.
+//2. To make this change, create a new string variable called fullGenre. Then create a switch
+statement and check the genre variable. Your case statements should check for the
+//different genre letters and then they should store the full genre name in the new
+//variable.
+//Example:
+// case ‘p’:
+// case ‘P’:
+// fullGenre = “pop”;
+// break;
+//3. Modify the WriteLine statement to print the full genre instead of the shortened version.
+//4. Once your program runs correctly, submit the assignment as directed by your
+//instructor.
