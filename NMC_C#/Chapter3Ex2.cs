@@ -4,7 +4,7 @@ namespace hoursCalc
     {
         static void Main(string[] args)
         {
-            //Constant variables
+            //---Constant variables---//
             const double discountPrice = 5.00;
             bool lateShift = false;
             bool earlyShift = false;
@@ -13,12 +13,12 @@ namespace hoursCalc
             double salary = 0.0;
 
 
-            //--Entering data--
+            //--Entering data--//
                 Console.Write("Do you work mornings? (type y if it is true, otherwise press any key).\n");
                 char? Morning = char.Parse(Console.ReadLine());
                 
-            //--If Statements--
-                //--Early or Late--
+            //--If Statements--//
+                //--Early or Late--//
                 if (Morning == 'y' || Morning == 'Y')
                 {
                     earlyShift = true;
@@ -27,7 +27,7 @@ namespace hoursCalc
                 {
                     lateShift = true;
                 }
-                //--If Early--
+                //--If Shift--//
                 if (earlyShift)
                 {
                     salary = hours * pay;
@@ -36,9 +36,8 @@ namespace hoursCalc
                 {
                     salary = hours * pay + 500;
                 }
-            Console.WriteLine($"Hours worked: {hours}");
-            Console.WriteLine($"Salary: {salary:C}");
+                //--Display--//
+            Console.WriteLine($"You worked: {hours} hours and received ${salary:0.00} Gross pay");
         }
     }      
 }
-
