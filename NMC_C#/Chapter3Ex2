@@ -1,16 +1,31 @@
-using System;
-namespace Boolishness
+namespace matineeDiscount
 {
- class Program
+ internal class Program
  {
  static void Main(string[] args)
  {
- bool workday = true;
- bool holiday = false;
- if (workday)
- Console.WriteLine($"Today is a workday");
- if (holiday)
- Console.WriteLine($"Today is a holiday");
+ //Constant variables
+ const double discountPrice = 5.00;
+ // Entering data
+ Console.Write("What is the name of the movie? ");
+ string? movieName = Console.ReadLine();
+ Console.Write("How many tickets are you purchasing? ");
+ int? tickets = int.Parse(Console.ReadLine());
+ // Determine ticket price
+ double? price;
+ Console.Write("Is the movie a matinee? (Y for Yes, any key for No) ");
+ char? matinee = char.Parse(Console.ReadLine());
+ if (matinee == 'Y')
+ price = discountPrice;
+ else
+ {
+ Console.Write("What is the price of each ticket? ");
+ price = double.Parse(Console.ReadLine());
+ }
+ // Displaying output
+ Console.WriteLine($"Movie: {movieName}");
+ Console.WriteLine($"Number of tickets: {tickets} at ${price} each");
+Console.WriteLine($"The total cost today is: " + String.Format("{0:C}", tickets * price));
  }
  }
 }
