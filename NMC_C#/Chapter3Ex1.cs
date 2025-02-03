@@ -10,22 +10,28 @@ namespace calcDiscount
       Console.Write("Please enter your 4 digit pin: ");
       //variables
        double pin = double.Parse(Console.ReadLine());
-       
+       double discount = 0;
 
        //---discount of pin---
        if (pin > 5000)
-       Console.WriteLine("You get 20% a discount!");
+        Console.WriteLine("You get 20% a discount!");
+        discount = 0.80;
        else if (pin > 1000)
-       Console.WriteLine("You get a 15% discount!");
-       else if (pin > 100)
-       Console.WriteLine("You get 10% a discount!");
+        Console.WriteLine("You get a 15% discount!");
+        discount = 0.85;
+        else if (pin > 100)
+        Console.WriteLine("You get 10% a discount!");
+        discount = 0.90;
        else
-       Console.WriteLine("You get a 5% discount!");
+        Console.WriteLine("You get a 5% discount!");
+        discount = 0.95;
 
       //spent amount
       Console.Write("Please enter the amount you spent: ");
       double spent = double.Parse(Console.ReadLine());
-      double totalcost = spent-(spent * pin);
+      
+      //double totalcost = spent-(spent * //discount);
+     //Console.Write($"The total cost of your amount spent is {totalcost}");
     }
   }
 }
@@ -44,6 +50,7 @@ namespace calcDiscount
 //d) Prompt the user for the amount they spent
 //e) Read in the amount spent and store the value.
 //f) Calculate the total cost = amount spent – ( amount spent * discount)
+//g) Write out the customer’s total cost using formatted output.
 //g) Write out the customer’s total cost using formatted output.
 //e) Read in the amount spent and store the value.
 //f) Calculate the total cost = amount spent – ( amount spent * discount)
