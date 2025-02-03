@@ -1,1 +1,32 @@
+using System;
+namespace Boolishness
+{
+ class Program
+ {
+ static void Main(string[] args)
+ {
+ bool workday = true;
+ bool holiday = false;
+ if (workday)
+ Console.WriteLine($"Today is a workday");
+ if (holiday)
+ Console.WriteLine($"Today is a holiday");
+ }
+ }
+}
+//The program should do the following:
+//a) Create bool variables for the early shift and late shift and initialize them to false.
+//b) Create a variable for hours and initialize it to 40
+//c) Create a variable for pay rate and initialize it to 50.
+//d) Create a variable for salary and initialize it to 0.
+//e) Ask the user if they work mornings (have them type ‘y’ if it is true, otherwise they
+//should press any key).
+//f) Use an if…else statement to check their answer. If it is true, set early shift to true. If
+//it is false, set late shift to true.
+//g) Use an if…else statement to check early shift to see if it is true. If it is true, calculate
+//the salary = hours * pay rate. If it is false, calculate the salary = hours * pay rate +
+//500.
+//h) Display the hours worked and the salary to the user. Use string interpolation AND
+//formatted output for the salary. (The formatted output is similar to what you did in
+//Chapter 2 Exercise 1)
 
