@@ -1,34 +1,35 @@
 using System;
-namespace myGrade
+namespace trainLocation
 {
- internal class Program
- {
- static void Main(string[] args)
- {
- Console.Write("Enter your test score: ");
- double score = double.Parse(Console.ReadLine());
- if (score >= 90)
- Console.WriteLine("A");
- else if (score >= 80)
- Console.WriteLine("B");
- else if (score >= 70)
- Console.WriteLine("C");
- else if (score >= 60)
- Console.WriteLine("D");
- else
- Console.WriteLine("Please see tutoring");
- }
- }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //---Welcome---//
+            Console.WriteLine("Welcome to the Conference Center!");
+            //--Prompt--//
+            Console.Write("Please enter your trainee number to receive the location of your first session: ");
+            int numbers = Convert.ToInt32(Console.ReadLine());
+
+            //---If Number---//
+            if (numbers > 500)
+            Console.WriteLine("Proceed to training room 7A");
+            else if (numbers > 300)
+            Console.WriteLine("Proceed to the main ballroom");
+            else if (numbers > 200)
+            Console.WriteLine("Proceed to the gymnasium");
+            else if (numbers > 100)
+            Console.WriteLine("Proceed to training room 6A");
+            else
+            Console.WriteLine("Proceed to training room 2B");
+            //-Lunch-//
+            Console.WriteLine('Lunch will be served from 11:30 to 1:00pm');
+            Console.Write('Please select your preferred cuisine: 1 = Italian, 2 = Vegan, 3 = Chinese, 4 = French, 5 = Chef\'s Surprise');
+            
+
+
+
+
+        }
+    }
 }
-
-//The program should do the following:
-//a) Welcome the trainees to the conference center.
-//b) Prompt the trainee to enter their trainee number
-//c) Read in the number and use a nested if…else to determine the training location. The
-//rules are as follows:
-//numbers > 500 go to training room 7A
-//numbers > 300 go to the main ballroom
-//numbers > 200 go to the gymnasium
-//numbers > 100 go to the training room 6A
-//everyone else should go to training room 2B
-
