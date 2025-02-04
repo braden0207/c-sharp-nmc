@@ -24,7 +24,7 @@ namespace trainLocation
             Console.WriteLine("Proceed to training room 2B");
             //-Lunch-//
             Console.WriteLine("Lunch will be served from 11:30 to 1:00pm");
-            Console.Write("Please select your preferred cuisine: 1 = Italian, 2 = Vegan, 3 = Chinese, 4 = French, 5 = Chef\'s Surprise");
+            Console.Write("Please select your preferred cuisine: 1 = Italian, 2 = Vegan, 3 = Chinese, 4 = French, 5 = Chef\'s Surprise: ");
             int cuisine = Convert.ToInt32(Console.ReadLine());
 
             switch (cuisine)
