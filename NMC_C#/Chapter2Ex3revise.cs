@@ -9,7 +9,7 @@ namespace myMusic
             string? songName = Console.ReadLine();
 
             //---Band of song
-            Console.WriteLine("What is the Name of the bank in the song? ");
+            Console.WriteLine("What is the Name of the band in the song? ");
             string? bandName = Console.ReadLine();
 
             //---Prompt user to input Character
@@ -27,8 +27,39 @@ namespace myMusic
                 case 'p':
                      fullgenre = "pop";
                      break;
-
-
+                case 'r':
+                     fullgenre = "rock";
+                     break;
+                case 'R':
+                     fullgenre = "rock";
+                     break;
+                case 'm':
+                     fullgenre = "metal";
+                     break;
+                case 'M':
+                     fullgenre = "metal";
+                     break;
+                case 'a':
+                     fullgenre = "alternative";
+                     break;
+                case 'A':
+                     fullgenre = "alternative";
+                     break;
+                case 'c':
+                     fullgenre = "country";
+                     break;
+                case 'C':
+                     fullgenre = "country";
+                     break;
+                case 'j':
+                     fullgenre = "jazz";
+                     break;
+                case 'J':
+                     fullgenre = "jazz";
+                     break;
+                default:
+                    fullgenre = "unknown";
+                    break;
             }
 
             //---Song Listened Time
@@ -37,18 +68,6 @@ namespace myMusic
 
             //---Displaying output
             Console.WriteLine($"You have been listening to {songName} by {bandName}. The song genre is {fullgenre} and you have listened to the song approximately {timesListened} times this week.");
-            //To make this change, create a new string variable called fullGenre. Then create a switch
-            // statement and check the genre variable. Your case statements should check for the
-            // different genre letters and then they should store the full genre name in the new
-            // variable.
-            // Example:
-            // case ‘p’:
-            // case ‘P’:
-            // fullGenre = “pop”;
-            // break;
-            // 3. Modify the WriteLine statement to print the full genre instead of the shortened version.
-            // 4. Once your program runs correctly, submit the assignment as directed by your
-            // instructor.
         }
     }
 }
