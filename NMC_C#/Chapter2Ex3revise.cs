@@ -17,7 +17,7 @@ namespace myMusic
             //---Convert to Char
             char bandChar = Convert.ToChar(Console.Read());
             Console.ReadLine();
-            //covert switch
+            //---covert switch
             string fullgenre;
             switch (char.ToUpper(bandChar))
             {
