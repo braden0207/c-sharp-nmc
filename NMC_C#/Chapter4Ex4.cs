@@ -50,3 +50,41 @@
 // play variable to true, otherwise set it to false
 
 //To see an example of the program running, watch: https://youtu.be/h_bge155VK8
+using System;
+namespace Chapter4Ex4
+{
+     internal class Program
+     {
+          static void Main(string[] args)
+          {
+             char keepPlaying = 'y';
+             while (keepPlaying == 'y')
+             {
+               int player1Total = 0;
+               int player2Total = 0;
+
+               for (int count = 0; count < 28; count++)
+               {
+                    Random value = Random.Next(1,7); //use random object to call next(1,7)
+                    player1Total += Value;
+               }
+               //display the calue player2 needs to beat
+
+               char quit = 'n';
+               while(quit == 'n')
+               {
+                    //use random object to call next(1,7)
+                    player2Total += Value;
+                    //display player 2's total
+                    //ask if they want to contine or quit
+                    quit = char.Parse(Console.ReadLine());
+               }
+               //nested if....else
+
+
+               Console.WriteLine("Do you want to play again? (y to continue)");
+               keepPlaying = char.Parse(Console.ReadLine());
+             }
+          }
+     }
+}
