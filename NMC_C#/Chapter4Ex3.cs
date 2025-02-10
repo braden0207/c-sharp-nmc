@@ -16,7 +16,9 @@ namespace Chapter4Ex3
 
                int flavors = 0;
                double Price = 0;
-
+               // • For each ice cream cone the customer purchases, you need to know:
+               // o The size of the cone
+               // o The flavor (or flavors) of ice cream
                switch (coneSize)
                {
                     case "small":
@@ -34,22 +36,24 @@ namespace Chapter4Ex3
                          break;
                }
                for (int flavorCount = 0; flavorCount< flavors; flavorCount++)
-               {
+                {
+                    //ask what flavor they want 
                     Console.WriteLine("What is your first flavor?");
                     string? flavorString = Console.ReadLine();
                     Console.WriteLine("What is your second flavor?");
                     flavorString = Console.ReadLine();
                     Console.WriteLine("What is your third flavor?");
                     flavorString = Console.ReadLine();
+                    Console.WriteLine("Cone # 1 is done.");
+                    
 
-               }
-               Double totalPrice = Price;
-               Console.WriteLine($"Thank you for your purchase, your total is: ${totalPrice}");
-               // • For each ice cream cone the customer purchases, you need to know:
-               // o The size of the cone
-               // o The flavor (or flavors) of ice cream
+                }
                // • You should total the cost of the cones and let the customer know how much to
                // pay. The amount should be formatted with 2 decimal places.
+               Double totalPrice = Price;
+               Console.WriteLine($"Thank you for your purchase, your total is: ${totalPrice}");
+
+
 
                // You are writing code for an ice cream shop. The shop sells 3 different size cones: small,
                // medium and large. Small cones get 1 scoop of ice-cream. Medium cones can have 2
@@ -90,4 +94,3 @@ namespace Chapter4Ex3
           }
      }
 }
-
