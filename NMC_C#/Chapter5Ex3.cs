@@ -1,34 +1,34 @@
-namespace adventureGame
+namespace gameofLife
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int health = 20, lives = 2, magic = 20, number = 0, round = 0;
+            int time = 100, energy = 100, satisfaction = 50, number = 0, days = 0;
 
             Random n = new Random();
-            Console.WriteLine("You have entered the magical land of the Hawk Owls");
-            Console.WriteLine("You are following a path through a forest to get to your village");
-            Console.WriteLine("You begin your journey with full health, magic and lives");
-            Console.WriteLine("The game will end after 10 rounds or when you run out of lives, magic, or health\n");
-            printHealth(health);
-            printLives(lives);
-            printMagic(magic);
+            Console.WriteLine("You have just got a new desk job and are going through the days.");
+            Console.WriteLine("How long will you be able to stay at the job without quitting?");
+            Console.WriteLine("You begin your day with plenty of time, energy and satisfaction");
+            Console.WriteLine("The game will end after 10 days or when you run out of time, energy or satisfaction");
+            printHealth(time);
+            printLives(energy);
+            printMagic(satisfaction);
 
             string direction = String.Empty;
-            while (lives > 0 && magic > 0 && health > 0 && round < 10)
+            while (energy > 0 && satisfaction > 0 && time > 0 && days < 10)
             {
-                round++;
+                days++;
                 direction = crossroads();
                 switch (direction)
                 {
-                    case "left":
+                    case "keep working":
                         number = n.Next(1, 6);
                         break;
-                    case "right":
+                    case "take a break":
                         number = n.Next(5, 12);
                         break;
-                    case "through":
+                    case "drink some coffee":
                         number = n.Next(8, 15);
                         break;
                 }
@@ -36,108 +36,106 @@ namespace adventureGame
                 {
                     case 1:
                     case 2:
-                        Console.WriteLine("You encountered a troll lurking under a bridge and had to pay 5 units of magic to safely cross the bridge.");
-                        magic -= 5;
+                        Console.WriteLine("");
+                        satisfaction -= 5;
                         break;
                     case 3:
                     case 4:
-                        Console.WriteLine("You fought against an evil wizard and lost 1 life, 5 units of health, and 5 units of magic.");
-                        health -= 5;
-                        lives -= 1;
-                        magic -= 5;
+                        Console.WriteLine("");
+                        time -= 5;
+                        energy -= 1;
+                        satisfaction -= 5;
                         break;
                     case 5:
                     case 6:
-                        Console.WriteLine("A fairy accused you of stealing her dust. You lost 2 units of magic, and 2 units of health");
-                        magic -= 2;
-                        health -= 2;
+                        Console.WriteLine("");
+                        satisfaction -= 2;
+                        time -= 2;
                         break;
                     case 7:
-                        Console.WriteLine("You found a baby unicorn lost in the woods and helped it find the way home.  The unicorn's mother gifted you " +
-                            "1 unit of life, 6 units of magic, and 10 units of health");
-                        health += 10;
-                        lives += 1;
-                        magic += 6;
+                       Console.WriteLine("");
+                        time += 10;
+                        energy += 1;
+                        satisfaction += 6;
                         break;
                     case 8:
-                        Console.WriteLine("You stumbled upon buried treasure in the forest and decided to leave it undisturbed. The ghost of a pirate " +
-                            "granted you 10 units of magic for your noble deed");
-                        magic += 10;
+                        Console.WriteLine("");
+                        satisfaction += 10;
                         break;
                     case 9:
-                        Console.WriteLine("You helped 2 young children escape a nasty witch.  Hansel and Gretel gifted you  1 unit of life for helping them.");
-                        lives += 1;
+                        Console.WriteLine("");
+                        energy += 1;
                         break;
                     case 10:
-                        Console.WriteLine("You helped a leprechaun across a raging river and were gifted 10 units of health");
-                        health += 10;
+                        Console.WriteLine("");
+                        time += 10;
                         break;
                     default:
-                        Console.WriteLine("You have fallen into a bog and cannot get out.  A traveler helps you for a mere 3 units of health and 3 units of magic.");
-                        health -= 3;
-                        magic -= 3;
+                        Console.WriteLine("");
+                        time -= 3;
+                        satisfaction -= 3;
                         break;
                 }
 
-                printRound(round);
-                printHealth(health);
-                printLives(lives);
-                printMagic(magic);
+                printRound(days);
+                printHealth(time);
+                printLives(energy);
+                printMagic(satisfaction);
             }
-            if (lives > 0 && magic > 0 && health > 0)
+            if (energy > 0 && satisfaction > 0 && time > 0)
             {
                 Console.WriteLine($"===========================================================================");
-                Console.WriteLine("    Congratulations - you made it to your village and won the game!");
+                Console.WriteLine("    Congratulations - You survived long enough to get a promotion!");
                 Console.WriteLine($"===========================================================================");
             }
             else
             {
                 Console.WriteLine($"===========================================================================");
-                Console.WriteLine("        Unfortunately, you did not make it to your village in time.");
+                Console.WriteLine("    You coun't take it anymore and quit your job!");
                 Console.WriteLine($"===========================================================================");
             }
         }
 
         static void printRound(int r)
         {
-            Console.WriteLine($"----------------------------Round {r}------------------------------");
+            Console.WriteLine($"----------------------------day {r}------------------------------");
         }
 
         static void printHealth(int h)
         {
-            Console.WriteLine($"Health={h}");
+            Console.WriteLine($"time= {h} minutes");
         }
         static void printMagic(int m)
         {
-            Console.WriteLine($"Magic={m}");
+            Console.WriteLine($"satisfaction = {m}%");
         }
         static void printLives(int l)
         {
-            Console.WriteLine($"Lives={l}");
+            Console.WriteLine($"energy= {l}%");
         }
         static string crossroads()
         {
-            Console.WriteLine("You have encountered a crossroad with an obstacle in front of you.\n" +
-                "Which direction would you like to go? (L = left, R=right, T=through )");
+            Console.WriteLine("The next hour has passed at your job.\n" +
+                "How would you like to continue? (K = keep working, B = Break, C = Drink some Coffee");
             char direction = char.Parse(Console.ReadLine());
             string changeDirection = String.Empty;
             switch (direction)
             {
-                case 'L':
-                case 'l':
-                    changeDirection = "left";
+                case 'K':
+                case 'k':
+                    changeDirection = "keep working";
                     break;
-                case 'R':
-                case 'r':
-                    changeDirection = "right";
+                case 'B':
+                case 'b':
+                    changeDirection = "take a break";
                     break;
-                case 'T':
-                case 't':
-                    changeDirection = "through";
+                case 'c':
+                case 'C':
+                    changeDirection = "drink some coffee";
                     break;
                 default:
-                    changeDirection = "left";
-                    Console.WriteLine("You selected an invalid direction, so you will be going to the left");
+                    changeDirection = "keep working";
+                    Console.WriteLine("You selected an invalid direction, so you will be staying at work.");
                     break;
             }
             
