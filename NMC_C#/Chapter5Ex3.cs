@@ -4,11 +4,8 @@ namespace adventureGame
     {
         static void Main(string[] args)
         {
-            int health = 20;
-            int lives = 2;
-            int magic = 20;
-            int number = 0;
-            int round = 0;
+            int health = 20, lives = 2, magic = 20, number = 0, round = 0;
+
             Random n = new Random();
             Console.WriteLine("You have entered the magical land of the Hawk Owls");
             Console.WriteLine("You are following a path through a forest to get to your village");
