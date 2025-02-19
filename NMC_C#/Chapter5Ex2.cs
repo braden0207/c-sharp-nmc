@@ -6,8 +6,10 @@ namespace pirateGame
     {
         static void Main(string[] args)
         {
+            //-- make bool variables --//
             bool piratesTurn = true, winner = false;
             Random rand = new Random();
+            //-- make int variables --//
             int call, toss, numFlips = 0, myScore = 0, pirateScore = 0;
 
             while (numFlips < 25 && !winner)
