@@ -11,9 +11,9 @@ namespace gameofLife
             Console.WriteLine("How long will you be able to stay at the job without quitting?");
             Console.WriteLine("You begin your day with plenty of time, energy and satisfaction");
             Console.WriteLine("The game will end after 10 days or when you run out of time, energy or satisfaction");
-            printHealth(time);
-            printLives(energy);
-            printMagic(satisfaction);
+            printTime(time);
+            printEnergy(energy);
+            printSat(satisfaction);
 
             string direction = String.Empty;
             while (energy > 0 && satisfaction > 0 && time > 0 && days < 10)
@@ -25,7 +25,7 @@ namespace gameofLife
                     case "keep working":
                         number = n.Next(1, 6);
                         break;
-                    case "take a break":
+                    case "slack off":
                         number = n.Next(5, 12);
                         break;
                     case "drink some coffee":
@@ -78,9 +78,9 @@ namespace gameofLife
                 }
 
                 printRound(days);
-                printHealth(time);
-                printLives(energy);
-                printMagic(satisfaction);
+                printTime(time);
+                printEnergy(energy);
+                printSat(satisfaction);
             }
             if (energy > 0 && satisfaction > 0 && time > 0)
             {
@@ -96,27 +96,27 @@ namespace gameofLife
             }
         }
 
-        static void printRound(int r)
+        static void printRound(int d)
         {
-            Console.WriteLine($"----------------------------day {r}------------------------------");
+            Console.WriteLine($"----------------------------day {d}------------------------------");
         }
 
-        static void printHealth(int h)
+        static void printTime(int t)
         {
-            Console.WriteLine($"time= {h} minutes");
+            Console.WriteLine($"time= {t} minutes");
         }
-        static void printMagic(int m)
+        static void printSat(int s)
         {
-            Console.WriteLine($"satisfaction = {m}%");
+            Console.WriteLine($"satisfaction = {s}%");
         }
-        static void printLives(int l)
+        static void printEnergy(int e)
         {
-            Console.WriteLine($"energy= {l}%");
+            Console.WriteLine($"energy = {e}%");
         }
         static string crossroads()
         {
             Console.WriteLine("The next hour has passed at your job.\n" +
-                "How would you like to continue? (K = keep working, B = Break, C = Drink some Coffee");
+                "How would you like to continue? (K = keep working, s = slack off, C = Drink some Coffee");
             char direction = char.Parse(Console.ReadLine());
             string changeDirection = String.Empty;
             switch (direction)
@@ -125,9 +125,9 @@ namespace gameofLife
                 case 'k':
                     changeDirection = "keep working";
                     break;
-                case 'B':
-                case 'b':
-                    changeDirection = "take a break";
+                case 's':
+                case 'S':
+                    changeDirection = "slack off";
                     break;
                 case 'c':
                 case 'C':
@@ -138,7 +138,6 @@ namespace gameofLife
                     Console.WriteLine("You selected an invalid direction, so you will be staying at work.");
                     break;
             }
-            
             return changeDirection;
         }
     }
