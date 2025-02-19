@@ -6,6 +6,7 @@ namespace Chapter5Ex1
     {
         static void Main(string[] args)
         {
+            //-- greet user--//
             Console.WriteLine("Hello, I'm here to help you with math problems");
             int input = Menu();
 
@@ -23,7 +24,7 @@ namespace Chapter5Ex1
                 input = Menu();
             }
         }
-
+        //--make menu--//
         static int Menu()
         {
             Console.WriteLine("Please make a selection from our menu.");
@@ -32,7 +33,7 @@ namespace Chapter5Ex1
             Console.ReadLine(); // removes newline from queue
             return Convert.ToChar(input);
         }
-
+        //--make addition to use--//
         static void Addition()
         {
             Random rnd = new Random();
@@ -41,7 +42,8 @@ namespace Chapter5Ex1
             int correctAns = n1 + n2;
             Console.Write($"The sum of {n1} + {n2} = ");
             int answer = int.Parse(Console.ReadLine());
-
+            
+            //--while answer wrong--//
             while (answer != correctAns)
             {
                 Console.WriteLine("Oops, incorrect! Try again.");
@@ -50,7 +52,8 @@ namespace Chapter5Ex1
             }
             Console.WriteLine("Great answer!");
         }
-
+        
+        //--make subtraction to use--//
         static void Subtraction()
         {
             Random rnd = new Random();
@@ -59,7 +62,8 @@ namespace Chapter5Ex1
             int correctAns = n1 - n2;
             Console.Write($"The result of {n1} - {n2} = ");
             int answer = int.Parse(Console.ReadLine());
-
+            
+            //--while answer wrong--//
             while (answer != correctAns)
             {
                 Console.WriteLine("Wrong answer, please try again.");
