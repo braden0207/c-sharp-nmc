@@ -36,44 +36,44 @@ namespace gameofLife
                 {
                     case 1:
                     case 2:
-                        Console.WriteLine("");
-                        satisfaction -= 5;
+                        Console.WriteLine("You turned in a project at work and your boss didnt like it! (-10 satisfaction)");
+                        satisfaction -= 10;
                         break;
                     case 3:
                     case 4:
-                        Console.WriteLine("");
-                        time -= 5;
-                        energy -= 1;
-                        satisfaction -= 5;
+                        Console.WriteLine("You had to do overtime at work because one of your coworkers called in!(- 5 time, -10 energy, -10 satisfaction)");
+                        time -= 50;
+                        energy -= 10;
+                        satisfaction -= 10;
                         break;
                     case 5:
                     case 6:
-                        Console.WriteLine("");
-                        satisfaction -= 2;
-                        time -= 2;
+                        Console.WriteLine("You spilt coffee on your computer and didnt save what you were working on! (-20 satisfaction, -30 time)");
+                        satisfaction -= 20;
+                        time -= 30;
                         break;
                     case 7:
-                       Console.WriteLine("");
+                       Console.WriteLine("Your boss let everyone get to work 3 hours later because of the weather!(+10 time, + 20 energy, +30 satisfaction)");
                         time += 10;
-                        energy += 1;
-                        satisfaction += 6;
+                        energy += 20;
+                        satisfaction += 30;
                         break;
                     case 8:
-                        Console.WriteLine("");
+                        Console.WriteLine("You finished a project that you put a lot of work into!(+10 satisfaction)");
                         satisfaction += 10;
                         break;
                     case 9:
-                        Console.WriteLine("");
-                        energy += 1;
+                        Console.WriteLine("You drink a energy drink(+30 energy)");
+                        energy += 30;
                         break;
                     case 10:
-                        Console.WriteLine("");
-                        time += 10;
+                        Console.WriteLine("Jeff your coworker helped you finish half your work because he was so nice!(+25 time)");
+                        time += 25;
                         break;
                     default:
-                        Console.WriteLine("");
-                        time -= 3;
-                        satisfaction -= 3;
+                        Console.WriteLine("You stubbed your toe and had to go to the walk-in(-40 time, -5 satisfaction)");
+                        time -= 40;
+                        satisfaction -= 5;
                         break;
                 }
 
