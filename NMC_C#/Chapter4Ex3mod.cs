@@ -13,8 +13,9 @@ namespace Chapter4Ex3
             Console.WriteLine("How many cones are you purchasing today?");
             int coneAmount = Convert.ToInt32(Console.ReadLine());
 
-            //variable
-            double totalPrice = 0;
+            //arrays
+            string[] flavors = new string[size];
+            
 
             //-- for loop to know:
             //--size of the cone
