@@ -6,64 +6,84 @@ namespace Chapter4Ex3
     {
         static void Main(string[] args)
         {
-            //--Welcome the customer
+            //-- Welcome the customer --//
             Console.WriteLine("Welcome to our ice cream shop!");
 
-            //--cones the customer is going to purchase.
+            //-- Get the number of cones --//
             Console.WriteLine("How many cones are you purchasing today?");
-            int coneAmount = Convert.ToInt32(Console.ReadLine());
+            int coneAmount = int.Parse(Console.ReadLine());
 
-            //arrays
-            string[] flavors = new string[size];
-            
+            //-- Arrays for cone size, flavors, and prices
+            char[] coneSize = new char[coneAmount];
+            string[] flavors = new string[coneAmount];
+            double[] prices = new double[coneAmount];
 
-            //-- for loop to know:
-            //--size of the cone
-            //--flavor (or flavors) of ice cream
-            for (int coneNumber = 1; coneNumber <= coneAmount; coneNumber++)
+            double grandTotal = 0;
+
+            //-- Process each cone --//
+            for (int i = 0; i < coneAmount; i++)
             {
-                Console.WriteLine($"What size cone do you want for Cone #{coneNumber}?");
+                Console.WriteLine("What size cone do you want?");
+                Console.WriteLine("s = small, m = medium, l = large");
 
-                string? coneSize = Console.ReadLine();
+                coneSize[i] = char.ToLower(char.Parse(Console.ReadLine()));
 
-                int flavors = 0;
-                double price = 0;
-
-                //--cone size switch
-                switch (coneSize?.ToLower())
+                // Validate cone size --//
+                while (coneSize[i] != 's' && coneSize[i] != 'm' && coneSize[i] != 'l')
                 {
-                    case "small":
-                        flavors = 1;
-                        price = 2.50;
+                    Console.WriteLine("The size must be s, m, or l. Please try again!");
+                    coneSize[i] = char.ToLower(char.Parse(Console.ReadLine()));
+                }
+
+                // Determine price and get flavors
+                switch (coneSize[i])
+                {
+                    case 's':
+                        Console.WriteLine("What flavor would you like?");
+                        flavors[i] = Console.ReadLine();
+                        prices[i] = 2.50;
                         break;
 
-                    case "medium":
-                        flavors = 2;
-                        price = 3.00;
+                    case 'm':
+                        flavors[i] = "";
+                        for (int n = 0; n < 2; n++)
+                        {
+                            Console.Write($"Enter flavor number {n + 1}: ");
+                            flavors[i] += Console.ReadLine() + (n == 0 ? "\n" : "");
+                        }
+                        prices[i] = 3.00;
                         break;
 
-                    default:
-                    flavors = 3;
-                        price = 3.50;
+                    case 'l':
+                        flavors[i] = "";
+                        for (int n = 0; n < 3; n++)
+                        {
+                            Console.Write($"Enter flavor number {n + 1}: ");
+                            flavors[i] += Console.ReadLine() + (n < 2 ? "\n" : "");
+                        }
+                        prices[i] = 3.50;
                         break;
                 }
 
-                //--Ask for flavors by amount of scoops
-                for (int flavorCount = 1; flavorCount <= flavors; flavorCount++)//--flavor count 1 so print #1 instead #0
-                {
-                    Console.WriteLine($"What is your flavor #{flavorCount}?");
-                    string? flavorString = Console.ReadLine();
-                }
-
-                //--Cone is done
-                Console.WriteLine($"Cone #{coneNumber} is done.");
-
-                //--get total price
-                totalPrice += price;
+                //-- say cone is done --//
+                Console.WriteLine($"Cone #{i + 1} is done.");
+                grandTotal += prices[i];
             }
 
-            //--total display
-            Console.WriteLine($"Thank you for your purchase, your total is: ${totalPrice:F2}");
+            //-- Print there order --//
+            Console.WriteLine("Order Summary:");
+            for (int i = 0; i < coneAmount; i++)
+            {
+                string size = coneSize[i] == 's' ? "small" : coneSize[i] == 'm' ? "medium" : "large";
+                Console.WriteLine($"------------------Cone #{i + 1}--------------------");
+                Console.WriteLine($"Size: {size}");
+                Console.WriteLine($"Flavor: \n{flavors[i]}");
+                Console.WriteLine($"Price: {prices[i]:C}");
+            }
+
+            //-- print total price --//
+            Console.WriteLine($"--------------------------------------------");
+            Console.WriteLine($"Thank you for your purchase, your total is: {grandTotal:C}");
         }
     }
 }
