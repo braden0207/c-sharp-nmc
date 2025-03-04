@@ -8,12 +8,12 @@ namespace Chapter6ToDoList
         static void Main(string[] args)
         {
             const string title = "To Do List";
-            const string year = " est. 2010";
+            const string week = "est. 2025";
             int menu;
-            ArrayList newEmp = new ArrayList() { };
+            ArrayList newActivity = new ArrayList() { };
             ArrayList todoList = new ArrayList() { "Cook", 1.0, "Homework", 1.2, "Work", 6.0, "Studying", 0.5};
 
-            printCompanyHeading(title, year);
+            printActivityHeading(title, week);
             Console.WriteLine("Please make a selection from the menu");
             Console.WriteLine("1. Print All by index\n2. Add \n3. Delete \n4. Delete All\n5. Quit");
             menu = int.Parse(Console.ReadLine());
@@ -22,18 +22,18 @@ namespace Chapter6ToDoList
             {
                 if (menu == 1)
                 {
-                    printCompanyHeading(title, year);
+                    printActivityHeading(title, week);
                     printActivity(todoList);
                 }
                 else if (menu == 2)
                 {
-                    printCompanyHeading(title, year);
-                    newEmp = addActivity();
-                    todoList.AddRange(newEmp);
+                    printActivityHeading(title, week);
+                    newActivity = addActivity();
+                    todoList.AddRange(newActivity);
                 }
                 else if (menu == 3)
                 {
-                    printCompanyHeading(title, year);
+                    printActivityHeading(title, week);
                     Console.Write("Enter the index# of the activity you want removed\n(the activity and hours will be erased): ");
                     int indexNumber = int.Parse(Console.ReadLine());
                     for (int count = 0; count < 3; count++)
@@ -45,22 +45,22 @@ namespace Chapter6ToDoList
                 }
                 else if (menu == 4)
                 {
-                    printCompanyHeading(title, year);
+                    printActivityHeading(title, week);
                     todoList.Clear();
                     Console.WriteLine("It is all gone!");
                 }
                 else
                     Console.WriteLine("You made an invalid selection, please try again!");
 
-                printCompanyHeading(title, year);
+                printActivityHeading(title, week);
                 Console.WriteLine("1. Print by index\n2. Add \n3. Delete \n4. Delete All\n5. Quit");
                 menu = int.Parse(Console.ReadLine());
             }
         }
-        static void printCompanyHeading(string comp, string yr)
+        static void printActivityHeading(string act, string time)
         {
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine($"  {comp}        {yr}");
+            Console.WriteLine($"  {act}        {time}");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             return;
         }
