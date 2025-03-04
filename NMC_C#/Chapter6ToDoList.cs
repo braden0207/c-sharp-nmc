@@ -22,8 +22,7 @@ namespace Chapter6ToDoList
             {
                 if (menu == 1)
                 {
-                    printActivityHeading(title, week);
-                    printActivity(todoList);
+                    printActivity(todoList);               
                 }
                 else if (menu == 2)
                 {
@@ -40,7 +39,7 @@ namespace Chapter6ToDoList
                     {
                         todoList.RemoveAt(indexNumber);
                     }
-                    Console.WriteLine("The values have been deleted");
+                    Console.WriteLine("The Activity has been deleted");
 
                 }
                 else if (menu == 4)
@@ -50,7 +49,7 @@ namespace Chapter6ToDoList
                     Console.WriteLine("It is all gone!");
                 }
                 else
-                    Console.WriteLine("You made an invalid selection, please try again!");
+                    Console.WriteLine("You made an invalid selection, please try again!\n");
 
                 printActivityHeading(title, week);
                 Console.WriteLine("1. Print by index\n2. Add \n3. Delete \n4. Delete All\n5. Quit");
@@ -64,14 +63,14 @@ namespace Chapter6ToDoList
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             return;
         }
-        static void printActivity(ArrayList emp)
+        static void printActivity(ArrayList activity)
         {
             int index = 0;
             Console.WriteLine("Values by Index#");
             Console.WriteLine("==============================");
-            foreach (var e in emp)
+            foreach (var a in activity)
             {
-                Console.WriteLine(index + ". " + e.ToString());
+                Console.WriteLine(index + ". " + a.ToString());
                 index++;
             }
             Console.WriteLine("==============================");
@@ -81,7 +80,7 @@ namespace Chapter6ToDoList
         }
         static ArrayList addActivity()
         {
-            Console.Write("How many employees do you wish to add? ");
+            Console.Write("How many things do you wish to add? ");
             int number = int.Parse(Console.ReadLine());
             ArrayList newActivity = new ArrayList { };
             for (int i = 0; i < number; i++)
