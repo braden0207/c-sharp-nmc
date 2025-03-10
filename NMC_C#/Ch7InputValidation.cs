@@ -14,12 +14,21 @@ namespace Ch7InputValidation
             Console.WriteLine("1. Print sorted list\n2. Add to List\n3. Delete List\n4. Quit");
             string stringMenu = Console.ReadLine();
             while(!int.TryParse(stringMenu, out menu))
-            [
-                //3 minutes and 67 seconds in 
+            {
                 Console.WriteLine("The number you input was not valid, Please try again. Enter a number between 1-4");
                 stringMenu = Console.ReadLine();
-              ]
-              
+            }
+            while(menu<1 || menu > 4)
+            {
+                  Console.WriteLine("The number you entered is not valid, it must be between 1-4, try again!");
+                  stringMenu = Console.ReadLine();
+                  while(!int.TryParse(stringMenu, out menu))
+                  {
+                    //3 minutes and 67 seconds in 
+                    Console.WriteLine("The number you input was not valid, Please try again. Enter a number between 1-4");
+                    stringMenu = Console.ReadLine();
+                  }
+            }
             //menu = int.Parse(Console.ReadLine());
             while (menu != 4)
             {
@@ -47,8 +56,24 @@ namespace Ch7InputValidation
                 else
                     Console.WriteLine("You made an invalid selection from the menu, please try again");
 
-                Console.WriteLine("1. Print sorted list\n2. Add to List\n3. Delete List\n4. Quit");
-                menu = int.Parse(Console.ReadLine());
+            Console.WriteLine("1. Print sorted list\n2. Add to List\n3. Delete List\n4. Quit");
+            stringMenu = Console.Readline();
+            while(!int.TryParse(stringMenu, out menu))
+            {
+                Console.WriteLine("The number you input was not valid, Please try again. Enter a number between 1-4");
+                stringMenu = Console.ReadLine();
+            }
+            while(menu<1 || menu > 4)
+            {
+                  Console.WriteLine("The number you entered is not valid, it must be between 1-4, try again!");
+                  stringMenu = Console.ReadLine();
+                  while(!int.TryParse(stringMenu, out menu))
+                  {
+                    //3 minutes and 67 seconds in 
+                    Console.WriteLine("The number you input was not valid, Please try again. Enter a number between 1-4");
+                    stringMenu = Console.ReadLine();
+                  }
+            }
             }
 
 
