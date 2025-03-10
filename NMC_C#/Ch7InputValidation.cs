@@ -38,7 +38,7 @@ namespace Ch7InputValidation
                 
                     Console.WriteLine("You made an invalid selection from the menu, please try again");
                 menu = validateMenu();
-                
+
            
             }
 
@@ -61,12 +61,12 @@ namespace Ch7InputValidation
                   stringMenu = Console.ReadLine();
                   while(!int.TryParse(stringMenu, out menu))
                   {
-                    //3 minutes and 67 seconds in 
                     Console.WriteLine("The number you input was not valid, Please try again. Enter a number between 1-4");
                     stringMenu = Console.ReadLine();
                   }
-                  return Menu;
             }
+            return Menu;
+        
         }
         static void printList(List<string> mem)
         {
@@ -90,3 +90,4 @@ namespace Ch7InputValidation
         }
     }
 }
+
