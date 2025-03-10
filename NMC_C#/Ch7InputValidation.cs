@@ -35,11 +35,9 @@ namespace Ch7InputValidation
                         Console.WriteLine("Sorry, that name does not exist, please try again");
                 }
                 else
-                
                     Console.WriteLine("You made an invalid selection from the menu, please try again");
-                menu = validateMenu();
 
-           
+                menu = validateMenu();
             }
 
 
