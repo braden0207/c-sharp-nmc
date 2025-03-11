@@ -26,6 +26,12 @@ namespace Ch7InputValidation
                 {
                     Console.Write("Enter the name of the person you want removed from the list: ");
                     name = Console.ReadLine();
+                    while(string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
+                    {
+                        Console.WriteLine("You entered a name that is null, empty, or all spaces. Please try again!");
+                        name = Console.ReadLine();
+                    }
+
                     if (members.Contains(name))
                     {
                         members.Remove(name);
@@ -63,7 +69,7 @@ namespace Ch7InputValidation
                     stringMenu = Console.ReadLine();
                   }
             }
-            return Menu;
+            return menu;
         
         }
         static void printList(List<string> mem)
@@ -76,16 +82,29 @@ namespace Ch7InputValidation
         static string[] addList()
         {
             Console.Write("How many members do you wish to add? ");
-            int number = int.Parse(Console.ReadLine());
+            string stringNumber = (Console.ReadLine());
+            int number;
+            while(!int.TryParse(stringNumber, out number))
+            {
+                Console.WriteLine("The number you input was not valid, Please try again. Try again!");
+                stringNumber = Console.ReadLine();
+            }
             string[] newMembers = new string[number];
             for (int i = 0; i < number; i++)
             {
                 Console.Write("Member name? ");
-                newMembers[i] = Console.ReadLine();
+                string tempName = Console.ReadLine();
+                while(string.IsNullOrEmpty(tempName) || string.IsNullOrWhiteSpace(tempName))
+                    {
+                        Console.WriteLine("You entered a name that is null, empty, or all spaces. Please try again!");
+                        tempName = Console.ReadLine();
+                    }
+                newMembers[i] = tempName;
 
             }
             return newMembers;
         }
     }
 }
+
 
