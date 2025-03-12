@@ -8,13 +8,13 @@ class Ch7MathMethods
 
         // Input validation
         Console.Write("Enter first integer: ");
-        while (!int.TryParse(Console.ReadLine(), out num1))
+        while (!int.TryParse(Console.ReadLine(), out n1))
         {
             Console.Write("Invalid input. Enter a valid integer: ");
         }
 
         Console.Write("Enter second integer: ");
-        while (!int.TryParse(Console.ReadLine(), out num2))
+        while (!int.TryParse(Console.ReadLine(), out n2))
         {
             Console.Write("Invalid input. Enter a valid integer: ");
         }
@@ -24,8 +24,8 @@ class Ch7MathMethods
         Console.WriteLine($"The Smaller number is: {Math.Min(n1, n2)}");
 
         // raised to power
-        Console.WriteLine($"{n1} raised to the power of {n2}: {Math.Pow(n1, 2)}");
-        Console.WriteLine($"{n2} raised to the power of {n1}: {Math.Pow(n2, 1)}");
+        Console.WriteLine($"{n1} raised to the power of {n2}: {Math.Pow(n1, n2)}");
+        Console.WriteLine($"{n2} raised to the power of {n1}: {Math.Pow(n2, n1)}");
 
         // Math.Sqrt()
         Console.WriteLine($"Square root of {n1}: {Math.Sqrt(n1)}");
