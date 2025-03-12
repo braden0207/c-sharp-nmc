@@ -1,5 +1,3 @@
-From ocdespaces 
-
 using System;
 
 class Ch7PasswordValidation
@@ -8,8 +6,10 @@ class Ch7PasswordValidation
     {
         bool validPassword = false;
 
+        // while password not good
         while (!validPassword)
         {
+            //display rules
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Password Rules:");
@@ -20,11 +20,13 @@ class Ch7PasswordValidation
             Console.WriteLine("5. Must include at least 1 symbol ($, ->, -<, =, +=, *=, /=, -=, ||, ~)");
             Console.WriteLine("6. Cannot include any spaces");
             Console.ResetColor();
-
+            //ask for password
             Console.Write("\nEnter a new password: ");
             string password = Console.ReadLine();
 
             // Validate if password is null, empty, or contains spaces
+
+            //error message
             if (string.IsNullOrWhiteSpace(password))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -32,7 +34,7 @@ class Ch7PasswordValidation
                 Console.ResetColor();
                 continue;
             }
-
+            //error message
             if (password.Length < 12)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -44,7 +46,7 @@ class Ch7PasswordValidation
             // Initialize counters
             int letterCount = 0, capitalCount = 0, numberCount = 0, symbolCount = 0;
 
-            // Define valid symbols
+            // Define okay symbols
             string symbols = "$->-<=+=*=/=-=||~";
 
             // Check each character
@@ -56,7 +58,7 @@ class Ch7PasswordValidation
                 if (symbols.Contains(c)) symbolCount++;
             }
 
-            // Validate password rules
+            // Validate password rules and error
             if (letterCount < 6)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -64,6 +66,7 @@ class Ch7PasswordValidation
                 Console.ResetColor();
                 continue;
             }
+            //error message
             if (capitalCount == 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -71,6 +74,7 @@ class Ch7PasswordValidation
                 Console.ResetColor();
                 continue;
             }
+            //error message
             if (numberCount == 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -78,6 +82,7 @@ class Ch7PasswordValidation
                 Console.ResetColor();
                 continue;
             }
+            //error message
             if (symbolCount == 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -86,6 +91,7 @@ class Ch7PasswordValidation
                 continue;
             }
 
+            // make green for good password
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Password is valid!");
             Console.ResetColor();
@@ -93,7 +99,8 @@ class Ch7PasswordValidation
             // Verification step
             Console.Write("Re-enter password for verification: ");
             string verifyPassword = Console.ReadLine();
-
+            
+            //password matches verification 
             if (password == verifyPassword)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -101,6 +108,7 @@ class Ch7PasswordValidation
                 Console.ResetColor();
                 validPassword = true;
             }
+            //display that verification password doesn’t match start, over at  top of loop
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
