@@ -43,3 +43,19 @@ namespace Chapter8Ex1
  Console.WriteLine($"=========================================================");
  }
  }
+
+ //Fix the changeCost() method by returning the cost as shown in the example above. Adjust the method call as shown
+// below:
+ 
+// cost = changeCost(cost);
+ 
+// 4. Run the program. You should notice that the club and cost show the new values.
+ 
+// 5. To fix the number of players, we are going pass the variable Call by Reference instead of Call by Value. Call by Reference
+// passes the actual value instead of a copy. Any change the method makes are retained, so nothing has to be returned from
+// the method.
+// Modify the changePlayers() method by adding the keyword ref or out before int players in the parameter list. Example:
+// private static void changePlayers(ref int players)
+// Modify the method call by adding ref or out before the variable in the argument list. Example: changePlayers(ref players);
+
+// 6. Run the program. You should notice that all values are retained and print correctly.
