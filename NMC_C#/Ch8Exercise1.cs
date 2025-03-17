@@ -10,10 +10,10 @@ namespace Chapter8Ex1
             int players = 0;
             club = changeClub(club);
             changeCost(cost);
-            changePlayers(players);
+            changePlayers(ref players);
             printEvent(club, cost, players);
         }
-        private static void changePlayers(int players)
+        private static void changePlayers(ref int players)
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("How many players are in the tournement?");
@@ -25,7 +25,7 @@ namespace Chapter8Ex1
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine($"What is the cost per player?");
                 cost = double.Parse(Console.ReadLine());
-                return;
+                return cost;
         }
         private static string changeClub(string club)
         {
