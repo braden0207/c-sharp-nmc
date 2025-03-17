@@ -1,1 +1,111 @@
+using System;
 
+namespace RacingGame
+{
+    internal class Program
+    {
+        const int SIZE = 6;
+        const int RACE_END = 100;
+        static void Main(string[] args)
+        {
+            string[] names = new string[SIZE];
+            char[] printChars = new char[SIZE];
+            int[] positions = new int[SIZE];
+            bool winner = false;
+            int winningPosition = -1;
+
+            addNamesAndPrintChar(names, printChars);
+
+            Random rand = new Random();
+            int round = 1;
+
+            while (!winner)
+            {
+                Console.Clear();
+                Console.WriteLine($"---------------------Round# {round}-----------------------");
+                changePositions(positions, rand);
+                roundResults(names, positions, printChars);
+                winningPosition = checkForWinner(positions, ref winner);
+                if (winner)
+                {
+                    Console.WriteLine("**********************News Flash**************************");
+                    Console.WriteLine($" The winner is {names[winningPosition]} with a score of {positions[winningPosition]}");
+                    Console.WriteLine("**********************************************************");
+                    Console.WriteLine("-------------------Result Summary------------------------");
+                    for (int i = 0; i < SIZE; i++)
+                    {
+                        Console.WriteLine($" Reindeer: {names[i]} Score: {positions[i]}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Press enter to continue...");
+                    Console.ReadLine();
+                }
+                round++;
+            }
+        }
+
+        private static void addNamesAndPrintChar(string[] names, char[] printChars)
+        {
+            for (int i = 0; i < SIZE; i++)
+            {
+                Console.WriteLine("Enter the reindeer's name:");
+                names[i] = Console.ReadLine();
+                while (string.IsNullOrEmpty(names[i]) || string.IsNullOrWhiteSpace(names[i]))
+                {
+                    Console.WriteLine("Invalid name. Please enter a valid reindeer's name:");
+                    names[i] = Console.ReadLine();
+                }
+
+                Console.WriteLine($"Enter a print character for {names[i]}:");
+                string tempChar = Console.ReadLine();
+                while (string.IsNullOrEmpty(tempChar) || string.IsNullOrWhiteSpace(tempChar))
+                {
+                    Console.WriteLine("Invalid character. Please enter a valid print character:");
+                    tempChar = Console.ReadLine();
+                }
+                printChars[i] = tempChar[0];
+            }
+        }
+
+        private static void changePositions(int[] positions, Random rand)
+        {
+            for (int i = 0; i < SIZE; i++)
+            {
+                positions[i] += rand.Next(1, 11);
+            }
+        }
+
+        private static void roundResults(string[] names, int[] positions, char[] printChars)
+        {
+            for (int i = 0; i < SIZE; i++)
+            {
+                Console.Write($"{names[i]}: ");
+                for (int j = 0; j < positions[i]; j++)
+                {
+                    Console.Write(printChars[i]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        private static int checkForWinner(int[] positions, ref bool winner)
+        {
+            int winningPosition = -1;
+            for (int i = 0; i < SIZE; i++)
+            {
+                if (positions[i] >= RACE_END)
+                {
+                    winner = true;
+                    winningPosition = i;
+                    Console.WriteLine("**********************News Flash**************************");
+                    Console.WriteLine($" We have a winner...");
+                    Console.WriteLine("**********************************************************");
+                    break;
+                }
+            }
+            return winningPosition;
+        }
+    }
+}
