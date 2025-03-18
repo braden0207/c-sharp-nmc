@@ -8,6 +8,12 @@ namespace RacingGame
         const int RACE_END = 100;
         static void Main(string[] args)
         {
+            Console.WriteLine("*********************News Flash**************************");
+            Console.WriteLine("Rudolph has injured his leg and cannot lead Santa's sleigh");
+            Console.WriteLine("Santa is holding reindeer games to see who is the fastest");
+            Console.WriteLine("Whoever wins will lead the sleigh on Christmas eve.");
+            Console.WriteLine("**********************************************************");
+
             string[] names = new string[SIZE];
             char[] printChars = new char[SIZE];
             int[] positions = new int[SIZE];
@@ -15,6 +21,8 @@ namespace RacingGame
             int winningPosition = -1;
 
             addNamesAndPrintChar(names, printChars);
+
+            Console.WriteLine("The contestants are ready to race...");
 
             Random rand = new Random();
             int round = 1;
