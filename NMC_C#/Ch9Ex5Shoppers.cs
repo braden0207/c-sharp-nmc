@@ -6,7 +6,7 @@ namespace Shoppers
     class ShoppingClub
     {
         // private fields
-        private string _Name;    //convert to auto-implimented//
+        public string Name {get; set;};
         public bool AgeRestriction {get; set;} = false;
         private int _Age;
         public int Age
@@ -22,7 +22,7 @@ namespace Shoppers
                     AgeRestriction = true; 
             }
         }
-        private bool _AgeRestriction = false;   //convert to auto-implimented//
+        private bool _AgeRestriction = false;   //get tid of//
 
     }
 
