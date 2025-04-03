@@ -6,37 +6,27 @@ namespace Shoppers
     class ShoppingClub
     {
         // private fields
-        private string _Name;
+        private string _Name;    //convert to auto-implimented//
+        public bool AgeRestriction {get; set;} = false;
         private int _Age;
-        private bool _AgeRestriction = false;
-
-        // Get methods for private fields
-        public string GetName()
+        public int Age
         {
-            return _Name;
+            get
+            {
+                return _Age;
+            }
+            set
+            {
+                _Age = value;
+                if (value < 21)
+                    AgeRestriction = true; 
+            }
         }
-        public int GetAge()
-        {
-            return _Age;
-        }
-        public bool GetAgeRestriction()
-        {
-            return _AgeRestriction;
-        }
-
-        // Set methods for private fields
-        public void SetName(string Name)
-        {
-            _Name = Name;
-        }
-        public void SetAge(int Age)
-        {
-            _Age = Age;
-            if (Age < 21)
-                _AgeRestriction = true;
-        }
+        private bool _AgeRestriction = false;   //convert to auto-implimented//
 
     }
+
+    
     internal class Program
     {
         static void Main(string[] args)
@@ -47,32 +37,32 @@ namespace Shoppers
             ShoppingClub shopper3 = new ShoppingClub();
 
             Console.Write("Name: ");
-            shopper1.SetName(Console.ReadLine());
+            shopper1.Name(Console.ReadLine());
             Console.Write("Age: ");
-            shopper1.SetAge(int.Parse(Console.ReadLine()));
+            shopper1.Age(int.Parse(Console.ReadLine()));
 
             Console.Write("Name: ");
-            shopper2.SetName(Console.ReadLine());
+            shopper2.Name(Console.ReadLine());
             Console.Write("Age: ");
-            shopper2.SetAge(int.Parse(Console.ReadLine()));
+            shopper2.Age(int.Parse(Console.ReadLine()));
 
             Console.Write("Name: ");
-            shopper3.SetName(Console.ReadLine());
+            shopper3.Name(Console.ReadLine());
             Console.Write("Age: ");
-            shopper3.SetAge(int.Parse(Console.ReadLine()));
+            shopper3.Age(int.Parse(Console.ReadLine()));
 
             Console.WriteLine("Here's your shopping group");
 
-            Console.WriteLine($"Name: {shopper1.GetName()}  Age: {shopper1.GetAge()}");
-            if (shopper1.GetAgeRestriction())
+            Console.WriteLine($"Name: {shopper1.Name}  Age: {shopper1.Age}");
+            if (shopper1.AgeRestriction)
                 Console.WriteLine("This shopper cannot purchase alcohol!");
 
-            Console.WriteLine($"Name: {shopper2.GetName()}  Age: {shopper2.GetAge()}");
-            if (shopper2.GetAgeRestriction())
+            Console.WriteLine($"Name: {shopper2.Name)}  Age: {shopper2.Age}");
+            if (shopper2.AgeRestriction)
                 Console.WriteLine("This shopper cannot purchase alcohol!");
 
-            Console.WriteLine($"Name: {shopper3.GetName()}  Age: {shopper3.GetAge()}");
-            if (shopper3.GetAgeRestriction())
+            Console.WriteLine($"Name: {shopper3.Name}  Age: {shopper3.Age}");
+            if (shopper3.AgeRestriction)
                 Console.WriteLine("This shopper cannot purchase alcohol!");
 
         }
