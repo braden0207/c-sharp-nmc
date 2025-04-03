@@ -143,7 +143,7 @@ namespace MythicalCreatures
                 tempValue = Console.ReadLine();
             }
             if (Char.ToLower(temp) == 'y')
-                myCreature[creatureCounter].IsDanger = true; //Is right?
+                myCreature[creatureCounter].IsDangerous = true; //Is right?
             else
                 myCreature[creatureCounter].IsDangerous = false; // Is right? 
 
