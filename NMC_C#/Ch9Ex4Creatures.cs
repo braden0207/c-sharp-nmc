@@ -10,18 +10,18 @@ namespace MythicalCreatures
         public string Name;
         public string Type;
         // private fields
-        private bool _IsDangerous;
-        private bool _IsHuman;
-        private List<string> _Powers;
+        private bool IsDangerous;
+        private bool IsHuman;
+        private List<string> Powers;
         // default constructor
         public Creature()
         {
             Id = 0;
             Type = string.Empty;
             Name = string.Empty;
-            _IsDangerous = false;
-            _IsHuman = false;
-            _Powers = new List<string> { };
+            IsDangerous = false;
+            IsHuman = false;
+            Powers = new List<string> { };
         }
         // parameterized constructor
         public Creature(int i, string typ, string nm, bool danger, bool human, List<string> pow)
@@ -29,47 +29,22 @@ namespace MythicalCreatures
             Id = i;
             Type = typ;
             Name = nm;
-            _IsDangerous = danger;
-            _IsHuman = human;
-            _Powers = pow;
+            IsDangerous = danger;
+            IsHuman = human;
+            Powers = pow;
         }
-        // Get methods for private fields
-        public bool GetDangerStatus()
-        {
-            return _IsDangerous;
-        }
-        public bool GetHumanStatus()
-        {
-            return _IsHuman;
-        }
-        public List<string> GetPowers()
-        {
-            return _Powers;
-        }
-        // Set methods for private fields
-        public void SetDangerStatus(bool danger)
-        {
-            _IsDangerous = danger;
-        }
-        public void SetHumanStatus(bool human)
-        {
-            _IsHuman = human;
-        }
-        public void SetPowers(List<string> pow)
-        {
-            _Powers = pow;
-        }
+       
         public void Print()
         {
             Console.WriteLine("-----------------------------------------------------------------");
             Console.WriteLine($"Creature # {Id + 1}, {Name}");
-            Console.WriteLine($"Type: {Type}    Dangerous? {_IsDangerous}     Human? {_IsHuman}");
-            if (_Powers.Count > 0)
+            Console.WriteLine($"Type: {Type}    Dangerous? {IsDangerous}     Human? {IsHuman}");
+            if (Powers.Count > 0)
             {
                 Console.Write($"Powers include: ");
-                for (int i = 0; i < _Powers.Count; i++)
+                for (int i = 0; i < Powers.Count; i++)
                 {
-                    Console.Write($" {_Powers[i]} ");
+                    Console.Write($" {Powers[i]} ");
                 }
             }
 
@@ -168,9 +143,9 @@ namespace MythicalCreatures
                 tempValue = Console.ReadLine();
             }
             if (Char.ToLower(temp) == 'y')
-                myCreature[creatureCounter].SetDangerStatus(true);
+                myCreature[creatureCounter].IsDanger(true); //Is right?
             else
-                myCreature[creatureCounter].SetDangerStatus(false);
+                myCreature[creatureCounter].IsDangerous(false); // Is right? 
 
             // If the creature is human, use the Set method to enter a value of true
             Console.Write("Is the creature all or part human? (y for yes, n for no) ");
@@ -181,9 +156,9 @@ namespace MythicalCreatures
                 tempValue = Console.ReadLine();
             }
             if (Char.ToLower(temp) == 'y')
-                myCreature[creatureCounter].SetHumanStatus(true);
+                myCreature[creatureCounter].IsHuman(true);
             else
-                myCreature[creatureCounter].SetHumanStatus(false);
+                myCreature[creatureCounter].IsHuman(false);
 
             // If the creature has powers, add them to a temporary list 
             // Once the temp list is done, use the SetPowers method to add the powers to the object
@@ -211,7 +186,7 @@ namespace MythicalCreatures
                         continue;
                     powers.Add(powerEntered);
                 }
-                myCreature[creatureCounter].SetPowers(powers);
+                myCreature[creatureCounter].Powers(powers);
             }
             creatureCounter++;
         }
