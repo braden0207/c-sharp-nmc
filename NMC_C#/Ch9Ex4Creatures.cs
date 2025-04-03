@@ -143,9 +143,9 @@ namespace MythicalCreatures
                 tempValue = Console.ReadLine();
             }
             if (Char.ToLower(temp) == 'y')
-                myCreature[creatureCounter].IsDanger(true); //Is right?
+                myCreature[creatureCounter].IsDanger = true; //Is right?
             else
-                myCreature[creatureCounter].IsDangerous(false); // Is right? 
+                myCreature[creatureCounter].IsDangerous = false; // Is right? 
 
             // If the creature is human, use the Set method to enter a value of true
             Console.Write("Is the creature all or part human? (y for yes, n for no) ");
@@ -156,9 +156,9 @@ namespace MythicalCreatures
                 tempValue = Console.ReadLine();
             }
             if (Char.ToLower(temp) == 'y')
-                myCreature[creatureCounter].IsHuman(true);
+                myCreature[creatureCounter].IsHuman= true;
             else
-                myCreature[creatureCounter].IsHuman(false);
+                myCreature[creatureCounter].IsHuman = false;
 
             // If the creature has powers, add them to a temporary list 
             // Once the temp list is done, use the SetPowers method to add the powers to the object
@@ -186,7 +186,7 @@ namespace MythicalCreatures
                         continue;
                     powers.Add(powerEntered);
                 }
-                myCreature[creatureCounter].Powers(powers);
+                myCreature[creatureCounter].Powers= powers;
             }
             creatureCounter++;
         }
