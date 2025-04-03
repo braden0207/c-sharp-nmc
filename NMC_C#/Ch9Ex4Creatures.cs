@@ -156,7 +156,7 @@ namespace MythicalCreatures
                 tempValue = Console.ReadLine();
             }
             if (Char.ToLower(temp) == 'y')
-                myCreature[creatureCounter].IsHuman= true;
+                myCreature[creatureCounter].IsHuman = true;
             else
                 myCreature[creatureCounter].IsHuman = false;
 
@@ -186,7 +186,7 @@ namespace MythicalCreatures
                         continue;
                     powers.Add(powerEntered);
                 }
-                myCreature[creatureCounter].Powers= powers;
+                myCreature[creatureCounter].Powers = powers;
             }
             creatureCounter++;
         }
