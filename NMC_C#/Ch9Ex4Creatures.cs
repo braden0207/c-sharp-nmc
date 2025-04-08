@@ -33,7 +33,7 @@ namespace MythicalCreatures
             IsHuman = human;
             Powers = pow;
         }
-       
+
         public void Print()
         {
             Console.WriteLine("-----------------------------------------------------------------");
@@ -47,11 +47,13 @@ namespace MythicalCreatures
                     Console.Write($" {Powers[i]} ");
                 }
             }
+
             Console.WriteLine();
             Console.WriteLine("-----------------------------------------------------------------");
             Console.WriteLine();
         }
     }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -64,6 +66,7 @@ namespace MythicalCreatures
                 Console.WriteLine($"Please enter a whole number greater than zero");
                 strCount = Console.ReadLine();
             }
+
             int creatureCounter = 0;
             // Create an array of creature objects. 
             Creature[] myCreature = new Creature[count];
@@ -72,6 +75,7 @@ namespace MythicalCreatures
             {
                 myCreature[i] = new Creature();
             }
+
             char select = menu();
             while (select != 'Q')
             {
