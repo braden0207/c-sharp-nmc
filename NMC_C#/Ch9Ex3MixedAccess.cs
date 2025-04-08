@@ -72,12 +72,9 @@ namespace Ch9Ex3MixedAccess
             Console.WriteLine($"Title: {Title}, Platform: {Platform}, Year: {_ReleaseYear}, Cost: ${_Cost}");
         }
     }
-}
 
-
-
-
-
+    class Program
+    {
         static void Main(string[] args)
         {
             Console.WriteLine("How many games would you like to enter?");
@@ -112,7 +109,7 @@ namespace Ch9Ex3MixedAccess
                 {
                     if (gamesAdded < count)
                     {
-                        AddGame(mygame, ref gamesAdded);
+                        AddGame(myGame, ref gamesAdded);
                     }
                     else
                     {
@@ -216,4 +213,3 @@ namespace Ch9Ex3MixedAccess
         }
     }
 }
-
