@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
+
 namespace MythicalCreatures
 {
     class Creature
@@ -9,10 +9,10 @@ namespace MythicalCreatures
         public int Id;
         public string Name;
         public string Type;
-        // private fields
-        private bool IsDangerous;
-        private bool IsHuman;
-        private List<string> Powers;
+        public bool IsDangerous; // Changed to public
+        public bool IsHuman; // Changed to public
+        public List<string> Powers;
+
         // default constructor
         public Creature()
         {
@@ -23,6 +23,7 @@ namespace MythicalCreatures
             IsHuman = false;
             Powers = new List<string> { };
         }
+
         // parameterized constructor
         public Creature(int i, string typ, string nm, bool danger, bool human, List<string> pow)
         {
@@ -33,7 +34,7 @@ namespace MythicalCreatures
             IsHuman = human;
             Powers = pow;
         }
-       
+
         public void Print()
         {
             Console.WriteLine("-----------------------------------------------------------------");
@@ -53,6 +54,7 @@ namespace MythicalCreatures
             Console.WriteLine();
         }
     }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -60,11 +62,12 @@ namespace MythicalCreatures
             Console.WriteLine("How many creatures would you like to enter?");
             string strCount = Console.ReadLine();
             int count;
-            while (!int.TryParse(strCount, out count) && count <= 0)
+            while (!int.TryParse(strCount, out count) || count <= 0)
             {
                 Console.WriteLine($"Please enter a whole number greater than zero");
                 strCount = Console.ReadLine();
             }
+
             int creatureCounter = 0;
             // Create an array of creature objects. 
             Creature[] myCreature = new Creature[count];
@@ -73,6 +76,7 @@ namespace MythicalCreatures
             {
                 myCreature[i] = new Creature();
             }
+
             char select = menu();
             while (select != 'Q')
             {
@@ -102,7 +106,6 @@ namespace MythicalCreatures
                         break;
                 }
                 select = menu();
-
             }// end while loop
         }// end main()
 
@@ -113,9 +116,9 @@ namespace MythicalCreatures
             myCreature[creatureCounter].Id = creatureCounter;
 
             // Enter the type from the console and validate data
-            Console.Write("Enter the type of creature( elf, vampire, werewolf etc.) ");
+            Console.Write("Enter the type of creature (elf, vampire, werewolf, etc.): ");
             string? tempValue = Console.ReadLine();
-            while (String.IsNullOrEmpty(tempValue) || String.IsNullOrEmpty(tempValue))
+            while (string.IsNullOrWhiteSpace(tempValue))
             {
                 Console.WriteLine("The Type cannot be spaces, null or empty, try again please");
                 tempValue = Console.ReadLine();
@@ -125,59 +128,53 @@ namespace MythicalCreatures
             // Enter the name from the console and validate data
             Console.Write("Enter the name of the creature: ");
             tempValue = Console.ReadLine();
-            while (String.IsNullOrEmpty(tempValue) || String.IsNullOrEmpty(tempValue))
+            while (string.IsNullOrWhiteSpace(tempValue))
             {
-                Console.WriteLine("The Type cannot be spaces, null or empty, try again please");
+                Console.WriteLine("The Name cannot be spaces, null or empty, try again please");
                 tempValue = Console.ReadLine();
             }
             myCreature[creatureCounter].Name = tempValue;
 
             // Handling Private Fields
             // If the creature is dangerous, use the Set method to enter a value of true
-            Console.Write("Is the creature dangerous? (y for yes, n for no) ");
+            Console.Write("Is the creature dangerous? (y for yes, n for no): ");
             tempValue = Console.ReadLine();
             char temp;
-            while (!char.TryParse(tempValue, out temp) && Char.ToLower(temp) != 'y' && Char.ToLower(temp) != 'n')
+            while (!char.TryParse(tempValue, out temp) || (char.ToLower(temp) != 'y' && char.ToLower(temp) != 'n'))
             {
                 Console.WriteLine("The value must be y or n, please try again");
                 tempValue = Console.ReadLine();
             }
-            if (Char.ToLower(temp) == 'y')
-                myCreature[creatureCounter].IsDangerous = true; //Is right?
-            else
-                myCreature[creatureCounter].IsDangerous = false; // Is right? 
+            myCreature[creatureCounter].IsDangerous = char.ToLower(temp) == 'y';
 
             // If the creature is human, use the Set method to enter a value of true
-            Console.Write("Is the creature all or part human? (y for yes, n for no) ");
+            Console.Write("Is the creature all or part human? (y for yes, n for no): ");
             tempValue = Console.ReadLine();
-            while (!char.TryParse(tempValue, out temp) && Char.ToLower(temp) != 'y' && Char.ToLower(temp) != 'n')
+            while (!char.TryParse(tempValue, out temp) || (char.ToLower(temp) != 'y' && char.ToLower(temp) != 'n'))
             {
                 Console.WriteLine("The value must be y or n, please try again");
                 tempValue = Console.ReadLine();
             }
-            if (Char.ToLower(temp) == 'y')
-                myCreature[creatureCounter].IsHuman = true;
-            else
-                myCreature[creatureCounter].IsHuman = false;
+            myCreature[creatureCounter].IsHuman = char.ToLower(temp) == 'y';
 
             // If the creature has powers, add them to a temporary list 
             // Once the temp list is done, use the SetPowers method to add the powers to the object
-            Console.Write("Does the creature have powers? (y for yes, n for no) ");
+            Console.Write("Does the creature have powers? (y for yes, n for no): ");
             tempValue = Console.ReadLine();
-            while (!char.TryParse(tempValue, out temp) && Char.ToLower(temp) != 'y' && Char.ToLower(temp) != 'n')
+            while (!char.TryParse(tempValue, out temp) || (char.ToLower(temp) != 'y' && char.ToLower(temp) != 'n'))
             {
                 Console.WriteLine("The value must be y or n, please try again");
                 tempValue = Console.ReadLine();
             }
-            if (Char.ToLower(temp) == 'y')
+            if (char.ToLower(temp) == 'y')
             {
                 List<string> powers = new List<string> { };
                 string? powerEntered = "";
                 while (powerEntered != "quit")
                 {
-                    Console.Write("Enter the super power or quit to end: ");
+                    Console.Write("Enter the super power or 'quit' to end: ");
                     powerEntered = Console.ReadLine();
-                    while (String.IsNullOrEmpty(powerEntered) || String.IsNullOrEmpty(powerEntered))
+                    while (string.IsNullOrWhiteSpace(powerEntered))
                     {
                         Console.WriteLine("The power cannot be spaces, null or empty, try again please");
                         powerEntered = Console.ReadLine();
@@ -197,13 +194,12 @@ namespace MythicalCreatures
             Console.WriteLine($"A - Add, P - Print, Q - Quit");
             string? value = Console.ReadLine();
             char choice;
-            while (!char.TryParse(value, out choice) && choice != 'A' && choice != 'P' && choice != 'Q')
+            while (!char.TryParse(value, out choice) || (choice != 'A' && choice != 'P' && choice != 'Q'))
             {
                 Console.WriteLine($"Please enter an A, P or Q");
                 value = Console.ReadLine();
             }
-            return Char.ToUpper(choice);
+            return char.ToUpper(choice);
         }
-
-    }// end program class
-}// end namespace
+    }
+}
