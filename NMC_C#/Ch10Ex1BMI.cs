@@ -1,37 +1,42 @@
 using System;
-using System.Reflection;
+using System.IO;
 
-class BMICalculator
+class Ch10Ex1BMI
 {
-    public static void Main()
+    static void Main()
     {
-        int height, weight;
-        Console.Write("Enter your height in inches (to the nearest whole number): ");
-        while (!int.TryParse(Console.ReadLine(), out height))
-        {
-            Console.WriteLine("Please enter a valid height");
-        }
-        Console.Write("Enter your weight to the nearest whole number: ");
-        while (!int.TryParse(Console.ReadLine(), out weight))
-        {
-            Console.WriteLine("Please enter a valid weight: ");
-        }
-        // create try block
-        if (height < 24 || height > 100)
-        {
-            height = 65;
-            Console.WriteLine("Height is out of range, a default of 65 has been used.");
-        }
-        if (weight < 80 || weight > 700)
-        {
-            weight = 150;
-            Console.WriteLine("Weight is out of range, a default of 150 has been used");
-        }
-        // end try block
-        // create catch block
-        decimal bmi = (weight * 703) / (height * height);
-        Console.WriteLine($"Your BMI is: {Math.Floor(bmi)}");
-        Console.WriteLine("For healthy adults BMI values between 18.5-24.9 indicate a healthy weight");
+        double height = 0, weight = 0, bmi = 0;
 
+        try
+        {
+            Console.Write("Enter height in inches: ");
+            height = Convert.ToDouble(Console.ReadLine());
+
+            if (height < 12 || height > 96)
+                throw new InvalidDataException("Height must be between 12 and 96 inches.");
+
+            Console.Write("Enter weight in pounds: ");
+            weight = Convert.ToDouble(Console.ReadLine());
+
+            if (weight < 1 || weight > 777)
+                throw new InvalidDataException("Weight must be between 1 and 777 pounds.");
+        }
+        catch (InvalidDataException ex)
+        {
+            Console.WriteLine($"Data error: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Unexpected error: {ex.Message}");
+        }
+        finally
+        {
+            if (height > 0 && weight > 0)
+            {
+                bmi = (weight * 703) / (height * height);
+                Console.WriteLine($"Your BMI is: {bmi:F2}");
+            }
+            Console.WriteLine("Program complete.");
+        }
     }
 }
