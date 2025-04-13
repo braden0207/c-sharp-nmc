@@ -1,79 +1,43 @@
 using System;
-namespace MoreMoney
+
+class Ch10Ex2BankExceptionHandling
 {
-    internal class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        double beginningBalance = 1000.00;
+        double deposit, withdrawal, endingBalance = 0;
+
+        try
         {
-            //Variable Declarations - must be above try block
-            //if you want to use variables outside of try,catch and finally
-            string? accountName = "";
-            double begBalance = 0, endBalance = 0;
-            int size = 0;
-            List<double> checks = new List<double>();
+            Console.Write("Enter deposit amount: ");
+            deposit = Convert.ToDouble(Console.ReadLine());
 
-                // Fill in and validate data
-                Console.Write("What is the name of the account? ");
-                accountName = ValidateString(Console.ReadLine());
-                Console.Write("What is the beginning balance?  ");
-                begBalance = ValidateDouble(Console.ReadLine());
-                endBalance = begBalance;
+            Console.Write("Enter withdrawal amount: ");
+            withdrawal = Convert.ToDouble(Console.ReadLine());
 
-                //Check processing
-                Console.Write("How many checks would you like to enter? ");
-                while (!int.TryParse(Console.ReadLine(), out size) && size <= 0)
-                {
-                    Console.WriteLine("Please enter a whole number ");
-                }
-                for (int c = 0; c < size; c++)
-                {
-                    Console.Write("Please enter the check amount: ");
-                    double tempCheck = ValidateDouble(Console.ReadLine());
-                    checks.Add(tempCheck);  // add the check to the list
-                    endBalance -= tempCheck;
-                }
+            endingBalance = beginningBalance + deposit - withdrawal;
 
+            if (endingBalance == 0)
+                throw new ArithmeticException("Ending balance is zero.");
+            else if (endingBalance < 0)
+                throw new ArithmeticException("Ending balance is negative.");
         }
-
-        private static void PrintSummary(string accountName, List<double> checks, double begBalance, double endBalance)
+        catch (ArithmeticException ex)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            // Print Account Summary
-            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.WriteLine($"Here is your account activity");
-            Console.WriteLine($"Account Name: {accountName}");
-            // Beginning balance
-            Console.WriteLine($"Beginning Balance: {begBalance:C}");
-            // Checks
-            for (int i = 0; i < checks.Count; i++)
-            {
-                Console.WriteLine($"Check Amount: {checks[i]:C}");
-            }
-            // Print out the last item in the list which is the ending balance
-            Console.WriteLine($"Ending Balance: {endBalance:C}");
-            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"Arithmetic error: {ex.Message}");
         }
-
-        public static double ValidateDouble(string strValue)
+        catch (Exception ex)
         {
-            double number;
-            while (!double.TryParse(strValue, out number) || number <= 0)
-            {
-                Console.WriteLine("Please enter a number greater than zero");
-                strValue = Console.ReadLine();
-            }
-            return number;
+            Console.WriteLine($"Unexpected error: {ex.Message}");
         }
-        public static string ValidateString(string strValue)
+        finally
         {
-            while (string.IsNullOrEmpty(strValue))
-            {
-                Console.WriteLine("Text entries cannot be blank or empty, please try again");
-                strValue = Console.ReadLine();
-            }
-            return strValue;
+            Console.WriteLine($"\n--- Account Summary ---");
+            Console.WriteLine($"Beginning Balance: ${beginningBalance:F2}");
+            Console.WriteLine($"Deposit: ${deposit:F2}");
+            Console.WriteLine($"Withdrawal: ${withdrawal:F2}");
+            Console.WriteLine($"Ending Balance: ${endingBalance:F2}");
+            Console.WriteLine("------------------------");
         }
-
     }
 }
