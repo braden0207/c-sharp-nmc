@@ -1,26 +1,48 @@
 using System;
-namespace MembersOnly
+
+namespace Chapter6MyArrays
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("How many items would you like to enter?");
-            int size = int.Parse(Console.ReadLine());
-            string[] students = new string[size];
-            double[] scores = new double[size];
-            for (int i = 0; i < size; i++)
+            try
             {
-                Console.WriteLine("Enter the students name: ");
-                students[i] = Console.ReadLine();
-                Console.WriteLine("Enter the test scores: ");
-                scores[i] = double.Parse(Console.ReadLine());
-            }
-            for(int i=0; i<size; i++)
-            {
-                Console.WriteLine($"Student: {students[i]} | Math Score: {scores[i]:0.00}%");
-            }
+                Console.WriteLine("How many items would you like to enter?");
+                int size = int.Parse(Console.ReadLine()); // May throw FormatException
 
+                string[] members = new string[size];
+                double[] dues = new double[size];
+
+                for (int i = 0; i < size; i++)
+                {
+                    Console.WriteLine("Enter the member name: ");
+                    members[i] = Console.ReadLine();
+
+                    Console.WriteLine("Enter the dues: ");
+                    dues[i] = double.Parse(Console.ReadLine()); // May throw FormatException
+                }
+
+                for (int i = 0; i < size; i++)
+                {
+                    Console.WriteLine($"Member: {members[i]}  Dues: {dues[i]:C}");
+                }
+            }
+            catch (FormatException ex)
+            {
+                // Handle invalid input (e.g., entering text instead of numbers)
+                Console.WriteLine($"Input error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                // Handle any other unexpected errors
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+            }
+            finally
+            {
+                // Always display this message, regardless of whether an exception occurred
+                Console.WriteLine("Have a great day!");
+            }
         }
     }
 }
