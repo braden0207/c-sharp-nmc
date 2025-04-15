@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 
 class Ch10Ex1BMI
 {
@@ -13,19 +12,19 @@ class Ch10Ex1BMI
             height = Convert.ToDouble(Console.ReadLine());
 
             if (height < 24 || height > 100)
+            {
                 height = 65;
-                throw new InvalidDataException("Height must be between 24 and 100 inches, default set to 65 inches");
+                Console.WriteLine("Height must be between 24 and 100 inches, default set to 65 inches.");
+            }
 
             Console.Write("Enter weight in pounds: ");
             weight = Convert.ToDouble(Console.ReadLine());
 
             if (weight < 80 || weight > 700)
+            {
                 weight = 150;
-                throw new InvalidDataException("Weight must be between 80 and 700 pounds, default set to 150 pounds.");
-        }
-        catch (InvalidDataException ex)
-        {
-            Console.WriteLine($"Data error: {ex.Message}");
+                Console.WriteLine("Weight must be between 80 and 700 pounds, default set to 150 pounds.");
+            }
         }
         catch (Exception ex)
         {
