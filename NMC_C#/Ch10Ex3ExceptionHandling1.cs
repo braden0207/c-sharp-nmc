@@ -1,6 +1,6 @@
 using System;
 
-namespace Chapter6MyArrays
+namespace Ch10Ex3ExceptionHandling1
 {
     internal class Program
     {
