@@ -12,14 +12,16 @@ class Ch10Ex1BMI
             Console.Write("Enter height in inches: ");
             height = Convert.ToDouble(Console.ReadLine());
 
-            if (height < 12 || height > 96)
-                throw new InvalidDataException("Height must be between 12 and 96 inches.");
+            if (height < 24 || height > 100)
+                height = 65;
+                throw new InvalidDataException("Height must be between 24 and 100 inches, default set to 65 inches");
 
             Console.Write("Enter weight in pounds: ");
             weight = Convert.ToDouble(Console.ReadLine());
 
-            if (weight < 1 || weight > 777)
-                throw new InvalidDataException("Weight must be between 1 and 777 pounds.");
+            if (weight < 80 || weight > 700)
+                weight = 150;
+                throw new InvalidDataException("Weight must be between 80 and 700 pounds, default set to 150 pounds.");
         }
         catch (InvalidDataException ex)
         {
